@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -456,14 +457,14 @@
       </div>
     </div>
     <div class="app-grid wrap-max" id="gridMenu" aria-hidden="true">
-      <a href="sessions/session1.html"><div class="icon-box">1️⃣</div>Session 1</a>
-      <a href="sessions/session2.html"><div class="icon-box">2️⃣</div>Session 2</a>
-      <a href="sessions/session3.html"><div class="icon-box">3️⃣</div>Session 3</a>
-      <a href="sessions/session4.html"><div class="icon-box">4️⃣</div>Session 4</a>
-      <a href="sessions/session5.html"><div class="icon-box">5️⃣</div>Session 5</a>
-      <a href="sessions/session6.html"><div class="icon-box">6️⃣</div>Session 6</a>
-      <a href="sessions/session7.html"><div class="icon-box">7️⃣</div>Session 7</a>
-      <a href="sessions/session8.html"><div class="icon-box">8️⃣</div>Session 8</a>
+      <a href="session1.html"><div class="icon-box">1️⃣</div>Session 1</a>
+      <a href="session2.html"><div class="icon-box">2️⃣</div>Session 2</a>
+      <a href="session3.html"><div class="icon-box">3️⃣</div>Session 3</a>
+      <a href="session4.html"><div class="icon-box">4️⃣</div>Session 4</a>
+      <a href="session5.html"><div class="icon-box">5️⃣</div>Session 5</a>
+      <a href="session6.html"><div class="icon-box">6️⃣</div>Session 6</a>
+      <a href="session7.html"><div class="icon-box">7️⃣</div>Session 7</a>
+      <a href="session8.html"><div class="icon-box">8️⃣</div>Session 8</a>
       <a href="https://ukubona-llc.github.io"><div class="icon-box">📊</div>Ukubona Home</a>
     </div>
   </header>
@@ -602,3 +603,329 @@
   </script>
 </body>
 </html>
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Same head as index.html, copy-paste the entire <head> section here for consistency -->
+  <title>Ukubona LLC: Session 1 - Foundations</title>
+  <!-- Include the style and scripts -->
+</head>
+<body>
+  <!-- Same header as index.html, with app-grid linking back to index and other sessions -->
+  <main class="page wrap-max">
+    <section class="card">
+      <h1>Session 1: Foundations – Why Math Powers Design (Vectors & Basics)</h1>
+      <h2>Discuss</h2>
+      <p>Review Captain's notes—math as core for creation (not available in Uganda, so build it now). Tie to Jonathan: "He used math to uncover a 'hidden effect' in baseball; you'll do it for flight."</p>
+      <h2>Code</h2>
+      <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+# Basic vectors for forces (thrust vs gravity)
+thrust = np.array([100, 50])  # Tweak these!
+gravity = np.array([0, -9.81])
+
+# Plot
+fig, ax = plt.subplots()
+ax.quiver(0, 0, thrust[0], thrust[1], angles='xy', scale_units='xy', scale=1, color='b', label='Thrust')
+ax.quiver(0, 0, gravity[0], gravity[1], angles='xy', scale_units='xy', scale=1, color='r', label='Gravity')
+ax.set_xlim(-10, 110)
+ax.set_ylim(-20, 60)
+ax.set_xlabel('X Force')
+ax.set_ylabel('Y Force')
+ax.legend()
+plt.title('Basic Aero Forces: Vectors')
+plt.grid(True)
+plt.show()</code></pre>
+      <p>Onboard to dev env. Run this script plotting basic vectors (e.g., thrust vs. gravity). Tweak angles to see lift changes.</p>
+      <h2>Excite</h2>
+      <p>"See how changing one number makes the 'plane' climb? That's math designing reality."</p>
+      <h2>Homework</h2>
+      <p>Adjust script for different forces; commit to GitHub.</p>
+      <h2>Math Focus</h2>
+      <p>Vectors (direction/magnitude for aero forces).</p>
+    </section>
+  </main>
+  <!-- Same footer -->
+</body>
+</html>
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Copy head -->
+  <title>Ukubona LLC: Session 2 - Rates of Change</title>
+</head>
+<body>
+  <!-- Copy header -->
+  <main class="page wrap-max">
+    <section class="card">
+      <h1>Session 2: Rates of Change – Calculus in Motion</h1>
+      <h2>Discuss</h2>
+      <p>How calculus models acceleration (e.g., takeoff speed). "Pilots feel it; designers predict it."</p>
+      <h2>Code</h2>
+      <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.linspace(0, 10, 100)
+velocity = 10 * t - 0.5 * 9.81 * t**2  # Simple projectile velocity
+accel = np.gradient(velocity, t)  # Derivative for acceleration
+
+plt.plot(t, velocity, label='Velocity')
+plt.plot(t, accel, label='Acceleration')
+plt.xlabel('Time (s)')
+plt.ylabel('Value (m/s or m/s²)')
+plt.title('Rates of Change: Calculus in Flight')
+plt.legend()
+plt.grid(True)
+plt.show()</code></pre>
+      <p>Extend Session 1—use numpy to compute derivatives for velocity curves. Plot a simple parabolic flight path (like a thrown ball, bridging to baseball).</p>
+      <h2>Excite</h2>
+      <p>Animate the path with matplotlib—watch it "fly" on screen.</p>
+      <h2>Homework</h2>
+      <p>Add wind variable; observe path changes.</p>
+    </section>
+  </main>
+  <!-- Footer -->
+</body>
+</html>
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Copy head -->
+  <title>Ukubona LLC: Session 3 - Systems Under Constraints</title>
+</head>
+<body>
+  <!-- Copy header -->
+  <main class="page wrap-max">
+    <section class="card">
+      <h1>Session 3: Systems Under Constraints – Differential Equations Intro</h1>
+      <h2>Discuss</h2>
+      <p>Real flight involves equations for drag/gravity. "This is where AI helps simulate."</p>
+      <h2>Code</h2>
+      <pre><code>from scipy.integrate import odeint
+import numpy as np
+import matplotlib.pyplot as plt
+
+def ode(y, t):
+    return [y[1], -9.81]  # Position and velocity ODE
+
+t = np.linspace(0, 10, 100)
+sol = odeint(ode, [0, 50], t)  # Initial height 0, velocity 50 m/s
+
+plt.plot(t, sol[:, 0], label='Height')
+plt.xlabel('Time')
+plt.ylabel('Height (m)')
+plt.title('Basic ODE: Projectile Motion')
+plt.legend()
+plt.grid(True)
+plt.show()</code></pre>
+      <p>Use scipy.integrate to solve a basic ODE for projectile motion with air resistance.</p>
+      <h2>Excite</h2>
+      <p>"Tweak resistance—see how it shortens the flight? That's testing designs safely."</p>
+      <h2>Homework</h2>
+      <p>Model a "drone drop" scenario.</p>
+    </section>
+  </main>
+  <!-- Footer -->
+</body>
+</html>
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Copy head -->
+  <title>Ukubona LLC: Session 4 - Optimization</title>
+</head>
+<body>
+  <!-- Copy header -->
+  <main class="page wrap-max">
+    <section class="card">
+      <h1>Session 4: Optimization – Making Math Decide</h1>
+      <h2>Discuss</h2>
+      <p>Aero engineers optimize (e.g., best wing shape). Tie to Ukubona: "Like personalizing risk models."</p>
+      <h2>Code</h2>
+      <pre><code>from scipy.optimize import minimize_scalar
+import numpy as np
+
+def objective(angle):
+    return -np.sin(angle)  # Maximize sine for range (simplified)
+
+res = minimize_scalar(objective, bounds=(0, np.pi/2), method='bounded')
+print(f'Optimal angle: {np.rad2deg(res.x):.2f} degrees')</code></pre>
+      <p>Use scipy.optimize to find max range for a trajectory (e.g., ideal launch angle).</p>
+      <h2>Excite</h2>
+      <p>Run "what if" loops—graph how fuel changes affect distance.</p>
+      <h2>Homework</h2>
+      <p>Optimize for a constraint (e.g., max altitude under weight).</p>
+    </section>
+  </main>
+  <!-- Footer -->
+</body>
+</html>
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Copy head -->
+  <title>Ukubona LLC: Session 5 - Matrices & Transformations</title>
+</head>
+<body>
+  <!-- Copy header -->
+  <main class="page wrap-max">
+    <section class="card">
+      <h1>Session 5: Matrices & Transformations – Linear Algebra for Structures</h1>
+      <h2>Discuss</h2>
+      <p>Wings/forces as matrices (e.g., stress analysis). "Math for building unbreakable designs."</p>
+      <h2>Code</h2>
+      <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+matrix = np.array([[0.5, -0.5], [0.5, 0.5]])  # Rotation matrix
+vector = np.array([1, 0])
+transformed = matrix @ vector
+
+plt.quiver(0, 0, vector[0], vector[1], color='b', label='Original')
+plt.quiver(0, 0, transformed[0], transformed[1], color='r', label='Transformed')
+plt.xlim(-1, 1)
+plt.ylim(-1, 1)
+plt.legend()
+plt.grid(True)
+plt.title('Linear Algebra: Force Transformation')
+plt.show()</code></pre>
+      <p>Use numpy.linalg for simple transformations (e.g., rotate a force vector). Integrate into flight model.</p>
+      <h2>Excite</h2>
+      <p>Visualize 2D "wing stress" plot—color-code safe/unsafe zones.</p>
+      <h2>Homework</h2>
+      <p>Apply to a multi-force scenario.</p>
+    </section>
+  </main>
+  <!-- Footer -->
+</body>
+</html>
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Copy head -->
+  <title>Ukubona LLC: Session 6 - Uncertainty & Stats</title>
+</head>
+<body>
+  <!-- Copy header -->
+  <main class="page wrap-max">
+    <section class="card">
+      <h1>Session 6: Uncertainty & Stats – Probabilistic Thinking</h1>
+      <h2>Discuss</h2>
+      <p>Real aero has variability (wind, errors). "Designers communicate uncertainty—like in your capstone."</p>
+      <h2>Code</h2>
+      <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.random.normal(0, 1, 1000)  # Simulated wind noise
+plt.hist(data, bins=30)
+plt.title('Uncertainty: Normal Distribution for Wind')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()</code></pre>
+      <p>Add random noise (numpy.random) to simulations; compute means/variances for reliability.</p>
+      <h2>Excite</h2>
+      <p>Run Monte Carlo sims—see distribution of landing spots. "This is gamified risk!"</p>
+      <h2>Homework</h2>
+      <p>Analyze limitations (e.g., "What if wind is extreme?").</p>
+    </section>
+  </main>
+  <!-- Footer -->
+</body>
+</html>
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Copy head -->
+  <title>Ukubona LLC: Session 7 - Integration & Polish</title>
+</head>
+<body>
+  <!-- Copy header -->
+  <main class="page wrap-max">
+    <section class="card">
+      <h1>Session 7: Integration & Polish – Building the Artifact</h1>
+      <h2>Discuss</h2>
+      <p>Pull it together—math as a system. Prep capstone structure (like Jonathan's: question/data/code/results).</p>
+      <h2>Code</h2>
+      <pre><code># Combine previous codes into a full script
+# Example: User input for angle, output trajectory plot
+import numpy as np
+import matplotlib.pyplot as plt
+
+angle = float(input('Enter angle (deg): '))
+rad = np.deg2rad(angle)
+t = np.linspace(0, 10, 100)
+x = 100 * np.cos(rad) * t
+y = 100 * np.sin(rad) * t - 0.5 * 9.81 * t**2
+plt.plot(x, y)
+plt.title('Full Trajectory')
+plt.xlabel('Distance (m)')
+plt.ylabel('Height (m)')
+plt.grid(True)
+plt.show()</code></pre>
+      <p>Combine into a full script: User inputs (e.g., angle, speed), outputs plots/insights. Add comments for clarity.</p>
+      <h2>Excite</h2>
+      <p>"This is your 'digital twin' of a flight—test decisions without crashing."</p>
+      <h2>Homework</h2>
+      <p>Refine and document (e.g., write a short tech note on assumptions).</p>
+    </section>
+  </main>
+  <!-- Footer -->
+</body>
+</html>
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Copy head -->
+  <title>Ukubona LLC: Session 8 - Review & Capstone Prep</title>
+</head>
+<body>
+  <!-- Copy header -->
+  <main class="page wrap-max">
+    <section class="card">
+      <h1>Session 8: Review & Capstone Prep – Explanation Skills</h1>
+      <h2>Discuss</h2>
+      <p>Critique progress (affirm growth, correct gaps). Emphasize writing/explaining (missing note from PDF).</p>
+      <h2>Code</h2>
+      <pre><code># Final model with comments
+# Debug and add conclusion in comments
+# Example from Session 7, with additions</code></pre>
+      <p>Debug final model; add a "conclusion" section in code comments.</p>
+      <h2>Excite</h2>
+      <p>Demo his sim to mom in the Zoom—show buy-in.</p>
+      <h2>Homework</h2>
+      <p>Build presentation. Example title: "Math Takes Flight: Simulating Aero Designs."</p>
+      <h3>Capstone Idea: "The Flight Design Effect"</h3>
+      <p>Inspired by Jonathan's "Soto–Judge Effect": Model how "protection" factors (e.g., wind assistance vs. drag) affect a plane's performance. Use data from simple aero datasets. Output: Rolling average plots of efficiency, "what if" sims.</p>
+      <p>Deliverable: Web/PPT with QR to GitHub repo. Sections: Question, Data, Code, Results, Conclusions.</p>
+    </section>
+  </main>
+  <!-- Footer -->
+</body>
+</html>
+```

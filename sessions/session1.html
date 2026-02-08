@@ -479,23 +479,37 @@
       <h2>Code</h2>
       <pre><code>import numpy as np
 import matplotlib.pyplot as plt
+import os
 
-# Basic vectors for forces (thrust vs gravity)
-thrust = np.array([100, 50])  # Tweak these!
+os.makedirs("plots", exist_ok=True)
+
+thrust = np.array([100, 50])
 gravity = np.array([0, -9.81])
 
-# Plot
 fig, ax = plt.subplots()
-ax.quiver(0, 0, thrust[0], thrust[1], angles='xy', scale_units='xy', scale=1, color='b', label='Thrust')
-ax.quiver(0, 0, gravity[0], gravity[1], angles='xy', scale_units='xy', scale=1, color='r', label='Gravity')
+
+ax.quiver(0, 0, thrust[0], thrust[1],
+          angles="xy", scale_units="xy", scale=1,
+          color="blue", label="Thrust")
+
+ax.quiver(0, 0, gravity[0], gravity[1],
+          angles="xy", scale_units="xy", scale=1,
+          color="red", label="Gravity")
+
 ax.set_xlim(-10, 110)
 ax.set_ylim(-20, 60)
-ax.set_xlabel('X Force')
-ax.set_ylabel('Y Force')
+
+ax.set_xlabel("X Force")
+ax.set_ylabel("Y Force")
+
 ax.legend()
-plt.title('Basic Aero Forces: Vectors')
-plt.grid(True)
-plt.show()</code></pre>
+ax.set_title("Basic Aero Forces")
+ax.grid(True)
+
+plt.savefig("plots/session1_forces.png", dpi=200)
+plt.close()
+
+print("✅ Plot saved!")</code></pre>
       <p>Onboard to dev env. Run this script plotting basic vectors (e.g., thrust vs. gravity). Tweak angles to see lift changes.</p>
       <h2>Excite</h2>
       <p>"See how changing one number makes the 'plane' climb? That's math designing reality."</p>

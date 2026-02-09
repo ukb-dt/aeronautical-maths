@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ukubona LLC: Aeronautics Math Internship</title>
+  <meta name="description" content="Aeronautics Math Internship at Ukubona LLC.">
+  <link rel="canonical" href="https://ukubona-llc.github.io/">
+  <meta name="robots" content="index,follow">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:site_name" content="Ukubona LLC">
+  <meta property="og:title" content="Ukubona LLC: Aeronautics Math Internship">
+  <meta property="og:description" content="Ukubona LLC: Aeronautics Math Internship">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ukubona-llc.github.io/">
+  <meta property="og:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ukubona LLC: Aeronautics Math Internship">
+  <meta name="twitter:description" content="Ukubona LLC: Aeronautics Math Internship">
+  <meta name="twitter:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
+
+  <!-- Icons / assets -->
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" type="image/x-icon">
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+  <link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-light.png" as="image">
+  <link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-dark.png" as="image">
+
+  <!-- Perf: preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/index.css">
+  <script id="MathJax-script" defer
+     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+    <div class="scroll-indicator"><div class="scroll-progress"></div></div>
+  <div class="bg-pattern"></div>
+  <!-- Same header as index.html, with app-grid linking back to index and other sessions -->
+   <header class="header">
+    <div class="nav-container wrap-max">
+      <img src="https://abikesa.github.io/logos/assets/ukubona-dark.png"
+           alt="Ukubona LLC Logo"
+           id="logo"
+           class="logo" />
+      <div class="top-right">
+        <ul class="nav-links">
+          <li><a href="/" class="nav-link" data-nav="home">Home</a></li>
+        </ul>
+        <button class="menu-icon" id="menuIcon" role="button" aria-label="Open navigation menu" aria-expanded="false">
+          <div></div><div></div><div></div>
+          <div></div><div></div><div></div>
+          <div></div><div></div><div></div>
+        </button>
+        <button id="toggle-theme" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+    <div class="app-grid wrap-max" id="gridMenu" aria-hidden="true">
+      <a href="session1.html"><div class="icon-box">1️⃣</div>Session 1</a>
+      <a href="session2.html"><div class="icon-box">2️⃣</div>Session 2</a>
+      <a href="session3.html"><div class="icon-box">3️⃣</div>Session 3</a>
+      <a href="session4.html"><div class="icon-box">4️⃣</div>Session 4</a>
+      <a href="session5.html"><div class="icon-box">5️⃣</div>Session 5</a>
+      <a href="session6.html"><div class="icon-box">6️⃣</div>Session 6</a>
+      <a href="session7.html"><div class="icon-box">7️⃣</div>Session 7</a>
+      <a href="session8.html"><div class="icon-box">8️⃣</div>Session 8</a>
+      <a href="https://ukubona-llc.github.io"><div class="icon-box">📊</div>Ukubona Home</a>
+    </div>
+  </header>
+  <main class="page wrap-max">
+
+<section class="card">
+
+<h1>Session 0: One-Click Setup — Your Engineering Lab</h1>
+
+<h2>Why This Matters</h2>
+
+<p>
+This session gives you a <strong>one-click setup</strong> so you can focus on
+learning math and flight — not fighting computers.
+</p>
+
+<p>
+By the end, you will have your own mini engineering lab running on your laptop.
+</p>
+
+<hr>
+
+<h2>Project Structure</h2>
+
+<p>Create one folder like this:</p>
+
+<pre><code>ukubona-session1/
+ ├── setup.sh
+ ├── run.sh
+ ├── s1.py
+ └── requirements.txt
+</code></pre>
+
+<hr>
+
+<h2>Step 1 — Create <code>setup.sh</code></h2>
+
+<pre><code>#!/usr/bin/env bash
+
+set -e
+
+echo "===================================="
+echo "🚀 Ukubona Python Setup"
+echo "===================================="
+
+if ! command -v python &> /dev/null && ! command -v python3 &> /dev/null
+then
+    echo "❌ Python not found."
+    exit 1
+fi
+
+if command -v python3 &> /dev/null
+then
+    PYTHON=python3
+else
+    PYTHON=python
+fi
+
+echo "✅ Using: $PYTHON"
+
+if [ ! -d "venv" ]; then
+    $PYTHON -m venv venv
+fi
+
+if [[ "$OSTYPE" == "msys"* || "$OSTYPE" == "cygwin"* ]]; then
+    source venv/Scripts/activate
+else
+    source venv/bin/activate
+fi
+
+pip install --upgrade pip
+pip install -r requirements.txt
+
+echo "✅ Setup complete!"
+</code></pre>
+
+<hr>
+
+<h2>Step 2 — Create <code>requirements.txt</code></h2>
+
+<pre><code>numpy
+matplotlib
+</code></pre>
+
+<hr>
+
+<h2>Step 3 — Create <code>s1.py</code></h2>
+
+<pre><code>import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+os.makedirs("plots", exist_ok=True)
+
+thrust = np.array([100, 50])
+gravity = np.array([0, -9.81])
+
+fig, ax = plt.subplots()
+
+ax.quiver(0, 0, thrust[0], thrust[1],
+          angles="xy", scale_units="xy", scale=1,
+          color="blue", label="Thrust")
+
+ax.quiver(0, 0, gravity[0], gravity[1],
+          angles="xy", scale_units="xy", scale=1,
+          color="red", label="Gravity")
+
+ax.set_xlim(-10, 110)
+ax.set_ylim(-20, 60)
+
+ax.set_xlabel("X Force")
+ax.set_ylabel("Y Force")
+
+ax.legend()
+ax.set_title("Basic Aero Forces")
+ax.grid(True)
+
+plt.savefig("plots/session1_forces.png", dpi=200)
+plt.close()
+
+print("✅ Plot saved!")
+</code></pre>
+<hr>
+<pre><code>#!/usr/bin/env bash
+set -e
+
+echo "=== GitHub Pages Hard Bootstrap ==="
+
+read -p "GitHub username: " GH_USER
+read -p "Repository name: " GH_REPO
+read -s -p "GitHub Personal Access Token: " GH_TOKEN
+echo
+
+API="https://api.github.com"
+REPO_API="$API/repos/$GH_USER/$GH_REPO"
+
+# ---- create repo if missing ----
+curl -s -o /dev/null -w "%{http_code}" \
+  -H "Authorization: token $GH_TOKEN" \
+  "$REPO_API" | grep -q 200 || \
+curl -s -X POST "$API/user/repos" \
+  -H "Authorization: token $GH_TOKEN" \
+  -H "Accept: application/vnd.github+json" \
+  -d "{
+    \"name\": \"$GH_REPO\",
+    \"private\": false,
+    \"auto_init\": false
+  }" >/dev/null
+
+# ---- local setup ----
+mkdir -p "$GH_REPO"
+cd "$GH_REPO"
+
+git init
+git checkout -B ukhona
+
+# ---- content ----
+cat <<EOF > index.md
+# GitHub Pages is live
+
+Bootstrap successful.
+
+EOF
+
+git add index.md
+git commit -m "bootstrap gh-pages"
+
+# ---- remote ----
+git remote remove origin 2>/dev/null || true
+git remote add origin "https://$GH_USER:$GH_TOKEN@github.com/$GH_USER/$GH_REPO.git"
+
+# ---- FORCE ALIGN (intentional) ----
+git push -f origin ukhona
+
+# ---- enable Pages ----
+curl -s -X POST "$REPO_API/pages" \
+  -H "Authorization: token $GH_TOKEN" \
+  -H "Accept: application/vnd.github+json" \
+  -d '{
+    "source": { "branch": "ukhona", "path": "/" }
+  }' >/dev/null || true
+
+echo
+echo "======================================"
+echo "LIVE (may take ~30s):"
+echo "https://$GH_USER.github.io/$GH_REPO/"
+echo "======================================"
+</code></pre>
+
+<hr>
+
+<h2>Step 4 — Create <code>run.sh</code></h2>
+
+<pre><code>#!/usr/bin/env bash
+
+set -e
+
+if [[ "$OSTYPE" == "msys"* || "$OSTYPE" == "cygwin"* ]]; then
+    source venv/Scripts/activate
+else
+    source venv/bin/activate
+fi
+
+python s1.py
+</code></pre>
+
+<hr>
+
+<h2>Step 5 — Make Files Executable</h2>
+
+<pre><code>chmod +x setup.sh run.sh
+</code></pre>
+
+<hr>
+
+<h2>How You Run It</h2>
+
+<h3>First Time</h3>
+
+<pre><code>./setup.sh
+</code></pre>
+
+<h3>Every Lesson</h3>
+
+<pre><code>./run.sh
+</code></pre>
+
+<hr>
+
+<h2>Your Result</h2>
+
+<p>You will see:</p>
+
+<pre><code>plots/session1_forces.png
+</code></pre>
+
+<p>
+Open it. That is your first engineering output.
+</p>
+
+<hr>
+
+<h2>Why This Matters</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Skill</th>
+  <th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Environments</td><td>setup.sh</td></tr>
+<tr><td>Libraries</td><td>requirements.txt</td></tr>
+<tr><td>Automation</td><td>run.sh</td></tr>
+<tr><td>Science</td><td>s1.py</td></tr>
+<tr><td>Reproducibility</td><td>GitHub</td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>Ukubona Principle</h2>
+
+<blockquote>
+You are not “learning to code”.
+<br><br>
+You are learning to build tools that let you see the world.
+</blockquote>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="wrap-max">
+
+    <div class="footer-chorus">
+
+      <span class="chip">"Ukubona" means</span>
+      <span class="chip"><em>to see, to witness</em></span>
+      <span class="chip">— to look into the mirror.</span>
+
+    </div>
+
+    <div class="footer-micro" style="margin-top:12px">
+
+      <p>
+        © 2025 Ukubona LLC · Johns Hopkins Enterprise Vendor
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+  <script src="../js/index.js"></script>
+</body>
+</html>

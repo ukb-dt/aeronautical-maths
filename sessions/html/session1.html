@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ukubona LLC: Aeronautics Math Internship</title>
-  <meta name="description" content="Aeronautics Math Internship at Ukubona LLC.">
+  <title>Ukubona LLC: Level 1 - Session 1: Foundations (Vectors & Basics)</title>
+  <meta name="description" content="Level 1, Session 1 of the Aeronautics Math Internship at Ukubona LLC.">
   <link rel="canonical" href="https://ukubona-llc.github.io/">
   <meta name="robots" content="index,follow">
   <meta name="color-scheme" content="dark light">
@@ -12,16 +12,16 @@
 
   <!-- Open Graph / Twitter -->
   <meta property="og:site_name" content="Ukubona LLC">
-  <meta property="og:title" content="Ukubona LLC: Aeronautics Math Internship">
-  <meta property="og:description" content="Ukubona LLC: Aeronautics Math Internship">
+  <meta property="og:title" content="Ukubona LLC: Level 1 - Session 1: Foundations (Vectors & Basics)">
+  <meta property="og:description" content="Level 1, Session 1 of the Aeronautics Math Internship at Ukubona LLC.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ukubona-llc.github.io/">
   <meta property="og:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ukubona LLC: Aeronautics Math Internship">
-  <meta name="twitter:description" content="Ukubona LLC: Aeronautics Math Internship">
+  <meta name="twitter:title" content="Ukubona LLC: Level 1 - Session 1: Foundations (Vectors & Basics)">
+  <meta name="twitter:description" content="Level 1, Session 1 of the Aeronautics Math Internship at Ukubona LLC.">
   <meta name="twitter:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
 
   <!-- Icons / assets -->
@@ -45,7 +45,7 @@
 <body>
     <div class="scroll-indicator"><div class="scroll-progress"></div></div>
   <div class="bg-pattern"></div>
-  <!-- Same header as index.html, with app-grid linking back to index and other sessions -->
+  <!-- Header with app-grid linking back to index and other sessions -->
    <header class="header">
     <div class="nav-container wrap-max">
       <img src="https://abikesa.github.io/logos/assets/ukubona-dark.png"
@@ -54,7 +54,7 @@
            class="logo" />
       <div class="top-right">
         <ul class="nav-links">
-          <li><a href="/" class="nav-link" data-nav="home">Home</a></li>
+          <li><a href="../../index.html" class="nav-link" data-nav="home">Home</a></li>
         </ul>
         <button class="menu-icon" id="menuIcon" role="button" aria-label="Open navigation menu" aria-expanded="false">
           <div></div><div></div><div></div>
@@ -65,7 +65,7 @@
       </div>
     </div>
     <div class="app-grid wrap-max" id="gridMenu" aria-hidden="true">
-      <a href="session1.html"><div class="icon-box">1️⃣</div>Session 1</a>
+      <a href="session0.html"><div class="icon-box">⚙️</div>Session 0</a>
       <a href="session2.html"><div class="icon-box">2️⃣</div>Session 2</a>
       <a href="session3.html"><div class="icon-box">3️⃣</div>Session 3</a>
       <a href="session4.html"><div class="icon-box">4️⃣</div>Session 4</a>
@@ -79,9 +79,13 @@
   <main class="page wrap-max">
     <section class="card">
       <h1>Session 1: Foundations – Why Math Powers Design (Vectors & Basics)</h1>
-      <h2>Discuss</h2>
-      <p>Review Captain's notes—math as core for creation (not available in Uganda, so build it now). Tie to Jonathan: "He used math to uncover a 'hidden effect' in baseball; you'll do it for flight."</p>
-      <h2>Code</h2>
+      <h2>Quick Review</h2>
+      <p>From Captain Gad's notes: Math is the core for creating aircraft designs (not readily available in Uganda, so we're building it now). Think of Jonathan—he used math to spot a '<a href="https://ukubona-llc.github.io/internship/ukb/token/ji2x26/assets/html/final.html">hidden effect</a>' in baseball. You'll do the same for flight!</p>
+      <h2>Get Started</h2>
+      <p>Open your <code>ukubona-aero-lab</code> folder in VS Code. In the terminal, type <code>wsl</code> (if on Windows) to enter Linux mode, then <code>source venv/bin/activate</code> to turn on your lab.</p>
+      <h2>Step 1: Create s1.py</h2>
+      <p>In terminal, type <code>code s1.py</code>. This opens the file in VS Code.</p>
+      <p>Copy-paste the code below into it, then save (Ctrl+S).</p>
       <pre><code>import numpy as np
 import matplotlib.pyplot as plt
 import os
@@ -115,16 +119,17 @@ plt.savefig("plots/session1_forces.png", dpi=200)
 plt.close()
 
 print("✅ Plot saved!")</code></pre>
-      <p>Onboard to dev env. Run this script plotting basic vectors (e.g., thrust vs. gravity). Tweak angles to see lift changes.</p>
-      <h2>Excite</h2>
-      <p>"See how changing one number makes the 'plane' climb? That's math designing reality."</p>
+      <h2>Step 2: Run the Code</h2>
+      <p>In terminal, type <code>bash run.sh</code>. This runs your script and saves a plot in <code>plots/session1_forces.png</code>. Open the image—it's thrust vs. gravity vectors!</p>
+      <h2>Excite: Play Around</h2>
+      <p>Edit s1.py: Change thrust to [100, 60] (higher Y for more lift). Save, run <code>bash run.sh</code> again. See how it "climbs" more? That's math designing flight!</p>
       <h2>Homework</h2>
-      <p>Adjust script for different forces; commit to GitHub.</p>
+      <p>Try different forces (e.g., stronger gravity: [0, -15]). Save your best plot. Commit to GitHub: In terminal, <code>git add .</code>, <code>git commit -m "Session 1 vectors"</code>, <code>git push</code>.</p>
       <h2>Math Focus</h2>
-      <p>Vectors (direction/magnitude for aero forces).</p>
+      <p>Vectors show direction and strength—like thrust pushing forward/up, gravity pulling down. Key for aero forces!</p>
     </section>
   </main>
-  <!-- Same footer -->
+  <!-- Footer -->
    <footer class="footer">
     <div class="wrap-max footer-wrap">
       <div class="footer-chorus" aria-label="Ukubona chorus">

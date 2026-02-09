@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ukubona LLC: Aeronautics Math Internship</title>
-  <meta name="description" content="Aeronautics Math Internship at Ukubona LLC.">
+  <title>Ukubona LLC: Level 1 - Session 0: Setup Your Engineering Lab</title>
+  <meta name="description" content="Level 1, Session 0 of the Aeronautics Math Internship at Ukubona LLC.">
   <link rel="canonical" href="https://ukubona-llc.github.io/">
   <meta name="robots" content="index,follow">
   <meta name="color-scheme" content="dark light">
@@ -12,16 +12,16 @@
 
   <!-- Open Graph / Twitter -->
   <meta property="og:site_name" content="Ukubona LLC">
-  <meta property="og:title" content="Ukubona LLC: Aeronautics Math Internship">
-  <meta property="og:description" content="Ukubona LLC: Aeronautics Math Internship">
+  <meta property="og:title" content="Ukubona LLC: Level 1 - Session 0: Setup Your Engineering Lab">
+  <meta property="og:description" content="Level 1, Session 0 of the Aeronautics Math Internship at Ukubona LLC.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ukubona-llc.github.io/">
   <meta property="og:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ukubona LLC: Aeronautics Math Internship">
-  <meta name="twitter:description" content="Ukubona LLC: Aeronautics Math Internship">
+  <meta name="twitter:title" content="Ukubona LLC: Level 1 - Session 0: Setup Your Engineering Lab">
+  <meta name="twitter:description" content="Level 1, Session 0 of the Aeronautics Math Internship at Ukubona LLC.">
   <meta name="twitter:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
 
   <!-- Icons / assets -->
@@ -45,7 +45,7 @@
 <body>
     <div class="scroll-indicator"><div class="scroll-progress"></div></div>
   <div class="bg-pattern"></div>
-  <!-- Same header as index.html, with app-grid linking back to index and other sessions -->
+  <!-- Header with app-grid linking back to index and other sessions -->
    <header class="header">
     <div class="nav-container wrap-max">
       <img src="https://abikesa.github.io/logos/assets/ukubona-dark.png"
@@ -54,7 +54,7 @@
            class="logo" />
       <div class="top-right">
         <ul class="nav-links">
-          <li><a href="/" class="nav-link" data-nav="home">Home</a></li>
+          <li><a href="../../index.html" class="nav-link" data-nav="home">Home</a></li>
         </ul>
         <button class="menu-icon" id="menuIcon" role="button" aria-label="Open navigation menu" aria-expanded="false">
           <div></div><div></div><div></div>
@@ -80,52 +80,52 @@
 
 <section class="card">
 
-<h1>Session 0: One-Click Setup — Your Engineering Lab</h1>
+<h1>Session 0: Automated One-Click Setup — Your Engineering Lab</h1>
 
 <h2>Why This Matters</h2>
 
 <p>
-This session gives you a <strong>one-click setup</strong> so you can focus on
-learning math and flight — not fighting computers.
+This setup refreshes your local dev environment with automation using Bash scripts. Since you're already onboarded with VS Code, Python, and WSL on Windows, we'll focus on quick steps to build a "lab" for aero simulations. By the end, you'll run a script that draws a force diagram—your first aero output!
 </p>
 
 <p>
-By the end, you will have your own mini engineering lab running on your laptop.
+We'll use VS Code's terminal. On Windows, remember to type <code>wsl</code> first to switch to Linux mode (where Bash works best). File paths in Bash use / (forward slashes), not \ (backslashes).
 </p>
 
 <hr>
 
-<h2>Project Structure</h2>
+<h2>Step 1: Open VS Code and Your Project Folder</h2>
 
-<p>Create one folder like this:</p>
-
-<pre><code>ukubona-session1/
- ├── setup.sh
- ├── run.sh
- ├── s1.py
- └── requirements.txt
-</code></pre>
+<ol>
+  <li>Open VS Code.</li>
+  <li>Click "File" > "Open Folder..." and choose/create a folder like <code>ukubona-aero-lab</code>.</li>
+  <li>Open the terminal in VS Code (Ctrl+` or Terminal > New Terminal).</li>
+  <li>If not already in WSL, type <code>wsl</code> and hit Enter to enter Linux mode.</li>
+</ol>
 
 <hr>
 
-<h2>Step 1 — Create <code>setup.sh</code></h2>
+<h2>Step 2: Create bootstrap.sh</h2>
+
+<p>In the terminal, type <code>code bootstrap.sh</code> and hit Enter. This opens a new file in VS Code.</p>
+
+<p>Copy the code below, paste it into the editor, and save (Ctrl+S).</p>
 
 <pre><code>#!/usr/bin/env bash
 
 set -e
 
 echo "===================================="
-echo "🚀 Ukubona Python Setup"
+echo "🚀 Bootstrapping Ukubona Aero Lab"
 echo "===================================="
 
-if ! command -v python &> /dev/null && ! command -v python3 &> /dev/null
-then
-    echo "❌ Python not found."
+# Check for Python
+if ! command -v python &> /dev/null && ! command -v python3 &> /dev/null; then
+    echo "❌ Python not found. Install Python 3 from python.org."
     exit 1
 fi
 
-if command -v python3 &> /dev/null
-then
+if command -v python3 &> /dev/null; then
     PYTHON=python3
 else
     PYTHON=python
@@ -133,9 +133,33 @@ fi
 
 echo "✅ Using: $PYTHON"
 
+# Create venv if missing
 if [ ! -d "venv" ]; then
     $PYTHON -m venv venv
 fi
+
+# Activate venv
+if [[ "$OSTYPE" == "msys"* || "$OSTYPE" == "cygwin"* ]]; then
+    source venv/Scripts/activate
+else
+    source venv/bin/activate
+fi
+
+# Create requirements.txt
+cat <<EOF > requirements.txt
+numpy
+matplotlib
+EOF
+
+# Install packages
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# Create run.sh
+cat <<EOF > run.sh
+#!/usr/bin/env bash
+
+set -e
 
 if [[ "$OSTYPE" == "msys"* || "$OSTYPE" == "cygwin"* ]]; then
     source venv/Scripts/activate
@@ -143,25 +167,14 @@ else
     source venv/bin/activate
 fi
 
-pip install --upgrade pip
-pip install -r requirements.txt
+python s1.py
+EOF
 
-echo "✅ Setup complete!"
-</code></pre>
+# No chmod yet - we'll run with bash
 
-<hr>
-
-<h2>Step 2 — Create <code>requirements.txt</code></h2>
-
-<pre><code>numpy
-matplotlib
-</code></pre>
-
-<hr>
-
-<h2>Step 3 — Create <code>s1.py</code></h2>
-
-<pre><code>import numpy as np
+# Create s1.py
+cat <<EOF > s1.py
+import numpy as np
 import matplotlib.pyplot as plt
 import os
 
@@ -194,142 +207,68 @@ plt.savefig("plots/session1_forces.png", dpi=200)
 plt.close()
 
 print("✅ Plot saved!")
-</code></pre>
-<hr>
-<pre><code>#!/usr/bin/env bash
-set -e
-
-echo "=== GitHub Pages Hard Bootstrap ==="
-
-read -p "GitHub username: " GH_USER
-read -p "Repository name: " GH_REPO
-read -s -p "GitHub Personal Access Token: " GH_TOKEN
-echo
-
-API="https://api.github.com"
-REPO_API="$API/repos/$GH_USER/$GH_REPO"
-
-# ---- create repo if missing ----
-curl -s -o /dev/null -w "%{http_code}" \
-  -H "Authorization: token $GH_TOKEN" \
-  "$REPO_API" | grep -q 200 || \
-curl -s -X POST "$API/user/repos" \
-  -H "Authorization: token $GH_TOKEN" \
-  -H "Accept: application/vnd.github+json" \
-  -d "{
-    \"name\": \"$GH_REPO\",
-    \"private\": false,
-    \"auto_init\": false
-  }" >/dev/null
-
-# ---- local setup ----
-mkdir -p "$GH_REPO"
-cd "$GH_REPO"
-
-git init
-git checkout -B ukhona
-
-# ---- content ----
-cat <<EOF > index.md
-# GitHub Pages is live
-
-Bootstrap successful.
-
 EOF
 
-git add index.md
-git commit -m "bootstrap gh-pages"
-
-# ---- remote ----
-git remote remove origin 2>/dev/null || true
-git remote add origin "https://$GH_USER:$GH_TOKEN@github.com/$GH_USER/$GH_REPO.git"
-
-# ---- FORCE ALIGN (intentional) ----
-git push -f origin ukhona
-
-# ---- enable Pages ----
-curl -s -X POST "$REPO_API/pages" \
-  -H "Authorization: token $GH_TOKEN" \
-  -H "Accept: application/vnd.github+json" \
-  -d '{
-    "source": { "branch": "ukhona", "path": "/" }
-  }' >/dev/null || true
-
+echo "✅ Bootstrap complete! Your lab is ready."
 echo
-echo "======================================"
-echo "LIVE (may take ~30s):"
-echo "https://$GH_USER.github.io/$GH_REPO/"
-echo "======================================"
+echo "Next: In terminal, type 'bash run.sh' to test."
 </code></pre>
 
 <hr>
 
-<h2>Step 4 — Create <code>run.sh</code></h2>
+<h2>Step 3: Run the Bootstrap Script</h2>
 
-<pre><code>#!/usr/bin/env bash
+<p>In the terminal (make sure you're in WSL—type <code>wsl</code> if needed), type:</p>
 
-set -e
+<pre><code>bash bootstrap.sh
+</code></pre>
 
-if [[ "$OSTYPE" == "msys"* || "$OSTYPE" == "cygwin"* ]]; then
-    source venv/Scripts/activate
-else
-    source venv/bin/activate
-fi
+<p>Watch it set up your venv, install tools, and create files.</p>
 
-python s1.py
+<hr>
+
+<h2>Step 4: Test Your Setup</h2>
+
+<p>In the terminal, type:</p>
+
+<pre><code>bash run.sh
+</code></pre>
+
+<p>This runs the test and creates <code>plots/session1_forces.png</code>. Open it in VS Code (File > Open File... or right-click in Explorer pane) or your file explorer—it's your first aero diagram!</p>
+
+<p>Reminder: Before sessions, type <code>source venv/bin/activate</code> (or <code>venv\Scripts\activate</code> if not in WSL) to activate your lab.</p>
+
+<hr>
+
+<h2>Your Project Folder Now</h2>
+
+<pre><code>ukubona-aero-lab/
+ ├── venv/              # Your Python setup
+ ├── requirements.txt   # Tools list
+ ├── run.sh             # Runner script
+ ├── s1.py              # Test code
+ ├── bootstrap.sh       # Setup script
+ └── plots/             # Your output (session1_forces.png)
 </code></pre>
 
 <hr>
 
-<h2>Step 5 — Make Files Executable</h2>
+<h2>Why Automation Matters in Aeronautics</h2>
 
-<pre><code>chmod +x setup.sh run.sh
-</code></pre>
-
-<hr>
-
-<h2>How You Run It</h2>
-
-<h3>First Time</h3>
-
-<pre><code>./setup.sh
-</code></pre>
-
-<h3>Every Lesson</h3>
-
-<pre><code>./run.sh
-</code></pre>
-
-<hr>
-
-<h2>Your Result</h2>
-
-<p>You will see:</p>
-
-<pre><code>plots/session1_forces.png
-</code></pre>
-
-<p>
-Open it. That is your first engineering output.
-</p>
-
-<hr>
-
-<h2>Why This Matters</h2>
+<p>Scripts automate setup, saving time for design—like testing plane models fast.</p>
 
 <table>
 <thead>
 <tr>
   <th>Skill</th>
-  <th>Where</th>
+  <th>Why It Fits Aero</th>
 </tr>
 </thead>
 <tbody>
-<tr><td>Environments</td><td>setup.sh</td></tr>
-<tr><td>Libraries</td><td>requirements.txt</td></tr>
-<tr><td>Automation</td><td>run.sh</td></tr>
-<tr><td>Science</td><td>s1.py</td></tr>
-<tr><td>Reproducibility</td><td>GitHub</td></tr>
+<tr><td>Bash Scripts</td><td>Run tests on many designs automatically.</td></tr>
+<tr><td>Venv</td><td>Keeps tools consistent, like a reliable toolkit.</td></tr>
+<tr><td>NumPy/Matplotlib</td><td>For math and visuals of forces/flights.</td></tr>
+<tr><td>Reproducibility</td><td>Share via GitHub without issues.</td></tr>
 </tbody>
 </table>
 
@@ -338,10 +277,10 @@ Open it. That is your first engineering output.
 <h2>Ukubona Principle</h2>
 
 <blockquote>
-You are not “learning to code”.
-<br><br>
-You are learning to build tools that let you see the world.
+You're building tools to explore flight—one simple step at a time!
 </blockquote>
+
+<p>Stuck? Note for Zoom. Head to Session 1!</p>
 
 </section>
 
@@ -350,13 +289,13 @@ You are learning to build tools that let you see the world.
 <!-- FOOTER -->
 <footer class="footer">
 
-  <div class="wrap-max">
+  <div class="wrap-max footer-wrap">
 
-    <div class="footer-chorus">
+    <div class="footer-chorus" aria-label="Ukubona chorus">
 
       <span class="chip">"Ukubona" means</span>
-      <span class="chip"><em>to see, to witness</em></span>
-      <span class="chip">— to look into the mirror.</span>
+      <span class="chip"><em>to see, to witness</em> —</span>
+      <span class="chip">to look into the mirror.</span>
 
     </div>
 

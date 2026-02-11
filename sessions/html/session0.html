@@ -37,7 +37,7 @@
 
   <!-- CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/index-origin.css">
   <script id="MathJax-script" defer
      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
@@ -73,7 +73,7 @@
       <a href="session6.html"><div class="icon-box">6️⃣</div>Session 6</a>
       <a href="session7.html"><div class="icon-box">7️⃣</div>Session 7</a>
       <a href="session8.html"><div class="icon-box">8️⃣</div>Session 8</a>
-      <a href="https://ukubona-llc.github.io"><div class="icon-box">📊</div>Ukubona Home</a>
+      <a href="https://ukb-dt.github.io/aeronautical-maths/"><div class="icon-box">📊</div>Ukubona Home</a>
     </div>
   </header>
   <main class="page wrap-max">
@@ -285,31 +285,12 @@ You're building tools to explore flight—one simple step at a time!
 </section>
 
 </main>
+  <!-- Centralized footer fetch -->
+  <div id="footer-placeholder"></div>
 
-<!-- FOOTER -->
-<footer class="footer">
-
-  <div class="wrap-max footer-wrap">
-
-    <div class="footer-chorus" aria-label="Ukubona chorus">
-
-      <span class="chip">"Ukubona" means</span>
-      <span class="chip"><em>to see, to witness</em> —</span>
-      <span class="chip">to look into the mirror.</span>
-
-    </div>
-
-    <div class="footer-micro" style="margin-top:12px">
-
-      <p>
-        © 2025 Ukubona LLC · Johns Hopkins Enterprise Vendor
-      </p>
-
-    </div>
-
-  </div>
-
-</footer>
+  <!-- Scripts (Order matters!! Feather, shared, then page code) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+  <script src="../js/landing.js"></script>
   <script src="../js/index.js"></script>
-</body>
-</html>
+  <script src="../js/shared.js"></script>
+  <script src="../js/tooltips.js"></script>

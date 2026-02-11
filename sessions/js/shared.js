@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const $$ = (s, r = doc) => Array.from(r.querySelectorAll(s));
 
   // --- Repo base (project pages vs apex) ---
-  const REPO = '/ukubona-llc.github.io';
+  const REPO = '/aeronautical-maths';
   const BASE = location.pathname.startsWith(REPO) ? REPO : '';
 
   // --- Cache-bust version (bump when partials change) ---
